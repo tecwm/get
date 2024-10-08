@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form method</title>
+    <style>
+        .form_title{
+            margin-top: 200px;
+            background-color: #0b5c50;
+            color: #fff;
+            font-size: 30px;
+            text-align: center;
+            max-width: 50%;
+            margin: 200px  auto 0;
+            padding: 0 52px;
+        }
+        .form {
+            text-align: center;
+            border: 2px solid #ccc;
+            max-width: 50%;
+            margin: 0 auto;
+            padding: 50px;
+        }
+        input{
+            font-size: 30px;
+            max-width: 100%;
+        }
+        input[type="text"] {
+            background-color: #c9f5ee;
+        }
+        input[type="submit"] {
+            margin-top: 15px;
+            margin-bottom: 25px;
+            background-color: #2ABCA7;
+            padding: 10px 45px;
+            border-radius: 5px;
+            border: 1px solid #2ABCA7;
+            display: inline-block;
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form_title">form method</div>
+    <div class="form">
+    <!--    <form action="https://php2021.tokyo-ec.net/get.html" method="get">-->
+            <form action="get.html" method="get">
+            <input type="text" name="var" placeholder="randomは自動数値" required><br>
+            <input type="submit" value="Send!">
+        </form>
+    </div>
+</body>
+
+</html>

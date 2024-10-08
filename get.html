@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Graduate&display=swap" rel="stylesheet">
+    <title>URLパラメーター受け取り（GET）</title>
+    <style>
+        main {
+            font-family: "Graduate", serif;
+            font-style: normal;
+            margin: 50vh auto 0;
+            transform: translateY(-50%);
+            text-align: center;
+            font-size: 10rem;
+            opacity: 0;
+            /* 初めは透明に設定 */
+            transform: translateY(-30%);
+            /* 下からスライドするために位置を下に設定 */
+            animation: fadeInFromBottom 1.5s forwards;
+        }
+
+/* CSSコード */
+.box{
+  border-top: 2px solid #aaa;
+  border-bottom: 2px solid #aaa;
+  padding: 0.5em  ;
+  margin: 0.2em ;
+  position: relative;
+}
+
+.box:before, .box:after{
+  content: '';
+  position: absolute;
+  top: -10px;
+  width: 2px;
+  height: -webkit-calc(100% + 20px);
+  height: calc(100% + 20px);
+  background-color: #aaa;
+}
+
+.box:before {
+  left: 10px;
+}
+
+.box:after {
+  right: 10px;
+}
+
+.box p {
+  padding-left: 50px;
+}
+        @keyframes fadeInFromBottom {
+            to {
+                opacity: 1;
+                /* アニメーション終了時に完全に表示 */
+                transform: translateY(-70%);
+                /* アニメーション終了時の位置 */
+                color: rgb(56, 42, 165);
+
+            }
+        }
+
+        p {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>      
+    <main>
+        <p id="text_n" class="box"></p>
+    </main>
+    <p><a href="#" onClick="history.back(); return false;">前のページにもどる</a></p>
+<script>
+        // URL が「http://www.example.com?lib=jquery&var=3」の場合
+        //alert(getParam('lib')); //「jquery」を出力
+        //alert(getParam('var')); // 「3」を出力
+
+      let str_n = getParam('var');
+
+      //  let str_n= location.search;
+
+        if(str_n=="random"){
+            //1～100
+            str_n= Math.floor(Math.random() * 100) + 1;
+            console.log(str_n);
+        }
+
+ 
+
+        //画面表示
+      //  document.getElementById('text_n').insertAdjacentHTML('afterend', str_n);
+      console.log(str_n);
+       document.querySelector('#text_n').innerHTML=str_n;
+
+        let element = document.querySelector('#text_n');
+    　  element.innerHTML =str_n;
+       /**
+         * Get the URL parameter value
+         *
+         * @param  name {string} パラメータのキー文字列
+         * @return  url {url} 対象のURL文字列（任意）
+         */
+         function getParam(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+    </script>
+</body>
+
+</html>
